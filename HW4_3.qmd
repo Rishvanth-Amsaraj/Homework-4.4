@@ -29,6 +29,8 @@ library(kableExtra)
 library(scales)
 ```
 
+# Coding Style: Tidyverse Style Guide
+
 # Busiest Airports Analysis
 
 This section examines passenger traffic trends for six major international airports
@@ -149,7 +151,7 @@ integral over $[-4, 4]$ captures nearly the entire area under the density curve.
 
 ## Small-Multiples Visualization
 
-```{r mc-setup}
+```{r montecarlo-setup}
 source("montecarlo_points.R")
 
 phi     <- function(x) dnorm(x)
@@ -190,7 +192,7 @@ make_mc_plot <- function(n, seed = 42) {
 }
 ```
 
-```{r mc-panels}
+```{r montecarlo-panels}
 #| fig-cap: "Monte Carlo estimates of the standard normal density integral over $[-4, 4]$ at four sample sizes. Teal points fall at or below the density curve (hits); red points fall above it (misses). The proportion of hits, scaled by the rectangle area of $(8)(0.4) = 3.2$, gives the estimate shown in each subtitle."
 #| fig-subcap: ["", "", "", ""]
 #| layout: [[1,1],[1,1]]
@@ -562,7 +564,7 @@ No other GenAI tools were used.
 
 ```{r code-appendix, echo=TRUE, eval=FALSE, tidy=TRUE, tidy.opts=list(width.cutoff=62)}
 # ==========================================================
-# montecarlo_points.R  (source file - shown for reference)
+# montecarlo_points.R  (source file shown for reference)
 # Generates random uniform points for Monte Carlo integration.
 # ==========================================================
 monte_carlo_points <- function(n, xmin, xmax, ymin, ymax) {
