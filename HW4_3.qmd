@@ -39,6 +39,8 @@ recovery patterns following the COVID-19 pandemic and differences in growth traj
 across the selected airports.
 
 ```{r airports-table}
+#| label: tbl-airports
+#| tbl-cap: "Annual passenger traffic for six major airports."
 airports <- tribble(
   ~Airport,                                            ~City,                 ~Code,
   ~`2020`,   ~`2021`,   ~`2022`,   ~`2023`,   ~`2024`,   ~`2025`,
@@ -82,6 +84,8 @@ relatively higher counts throughout the downturn, and Dubai and Tokyo posted
 steady year-on-year gains from 2021 onward.
 
 ```{r airports-plot, fig.cap="Passenger traffic trends (2020--2025) for six major airports. All airports show a steap 2020 decline with strong post recovery. Dubai and Atlanta lead in absolute volume by 2024--2025.", fig.width=7, fig.height=4.2}
+#| fig-cap: "Passenger traffic trends for six major airports."
+#| fig-alt: "Line chart showing passenger growth for six major airports from 2020 to 2025, with sharp decline in 2020 and recovery afterward."
 airports_long <- airports %>%
   pivot_longer(cols = `2020`:`2025`,
                names_to  = "Year",
@@ -196,6 +200,7 @@ make_mc_plot <- function(n, seed = 42) {
 #| fig-cap: "Monte Carlo estimates of the standard normal density integral over $[-4, 4]$ at four sample sizes. Teal points fall at or below the density curve (hits); red points fall above it (misses). The proportion of hits, scaled by the rectangle area of $(8)(0.4) = 3.2$, gives the estimate shown in each subtitle."
 #| fig-subcap: ["", "", "", ""]
 #| layout: [[1,1],[1,1]]
+#| fig-alt: "Four-panel visualization showing Monte Carlo simulation points at sample sizes 10, 100, 1000, and 10000, illustrating convergence to the true integral."
 #| fig-width: 7
 #| fig-height: 5.5
 
@@ -272,6 +277,8 @@ clean, well-commented R code and the visualization was
 produced directly from that code.
 
 ```{r calcium-plot, fig.cap="Ulnar calcium levels over four years by treatment group. Individual trajectories (light lines) and group means with 95\\% confidence intervals (shaded bands and bold lines).", fig.width=6.5, fig.height=4}
+#| fig-cap: "Ulnar calcium levels over four years by treatment group, showing individual trajectories and group means with 95% confidence intervals."
+#| fig-alt: "Spaghetti plot with individual calcium trajectories and overlaid group means with confidence intervals for null treatment and diet groups."
 # Read calcium.csv — col_names=FALSE + skip=1 discards the duplicate
 # header row (y0,y1,y2,y3,y0,y1,y2,y3) without editing the original file.
 cal_raw <- read_csv(
@@ -623,7 +630,6 @@ airports %>%
     ~ format(.x, big.mark = ",", scientific = FALSE)
   )) %>%
   kable(
-    caption  = "Annual passenger traffic (2020-2025)",
     align    = c("l", "c", rep("r", 6)),
     booktabs = TRUE
   ) %>%
